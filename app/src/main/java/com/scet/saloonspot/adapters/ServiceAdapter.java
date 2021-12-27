@@ -124,9 +124,12 @@ public class ServiceAdapter extends RecyclerView.Adapter<ServiceAdapter.ViewHold
         if (value.equals("user")){
             holder.llAdd.setVisibility(View.VISIBLE);
             holder.llEditDelete.setVisibility(View.GONE);
-        } else {
+        } else if (value.equals("saloon")){
             holder.llAdd.setVisibility(View.GONE);
-            holder.llEditDelete.setVisibility(View.VISIBLE);
+            holder.llEditDelete.setVisibility(View.GONE);
+        } else if (value.equals("app")){
+            holder.llAdd.setVisibility(View.GONE);
+            holder.llEditDelete.setVisibility(View.GONE);
         }
 
     }

@@ -7,6 +7,7 @@ public class Services {
     String price;
     boolean isSelected = false;
 
+
     public String getName() {
         return name;
     }

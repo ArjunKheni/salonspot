@@ -14,6 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -71,6 +73,8 @@ public class Showreviewactivity extends AppCompatActivity {
                 Review review = new Review();
                 review.setReview(edtreview.getText().toString());
                 review.setRatting(String.valueOf(rtbreview.getRating()));
+                FirebaseUser currentFirebaseUser = FirebaseAuth.getInstance().getCurrentUser() ;
+                review.setUserName(currentFirebaseUser.getDisplayName());
                 mDatabase.child("Saloons").child(id).child("Reviews").child(mDatabase.push().getKey()).setValue(review);
                 edtreview.setText("");
                 rtbreview.setNumStars(0);
@@ -96,13 +100,13 @@ public class Showreviewactivity extends AppCompatActivity {
                 for(DataSnapshot datas: dataSnapshot.getChildren()){
                     String rating = datas.child("ratting").getValue().toString();
                     String strReview = datas.child("review").getValue().toString();
+                    String struser = datas.child("userName").getValue().toString();
                    //String type = datas.child("type").getValue().toString();
 
                     Review review = new Review();
                     review.setRatting(rating);
                     review.setReview(strReview);
                     reviewsList.add(review);
-
                 }
                 adapter = new ReviewAdapter(Showreviewactivity.this,reviewsList);
                 reviewrecyclerview.setAdapter(adapter);

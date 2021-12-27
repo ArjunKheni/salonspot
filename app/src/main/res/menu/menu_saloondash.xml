@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item  android:id="@+id/saloontime"
+        android:title="Saloon Time"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_time"/>
+
+    <item  android:id="@+id/saloonApp"
+        android:title="Saloon"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_notification"/>
+
+</menu>

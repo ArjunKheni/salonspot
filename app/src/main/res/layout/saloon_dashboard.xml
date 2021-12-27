@@ -8,32 +8,56 @@
     android:theme="@style/AppTheme.Fullscreen"
     tools:context=".AdminDashBoardActivity">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="350dp"
-        android:src="@drawable/womenbarber"/>
-
     <TextView
         android:id="@+id/saloonname"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Saloon Name Here"
-        android:textSize="35dp"
-        android:gravity="center"
-        android:textColor="@color/background_color"
-        android:layout_centerInParent="true"/>
+        android:layout_height="80dp"
+        android:background="@color/background_color"
+        android:gravity="center|left"
+        android:padding="10dp"
+        android:text="Salon Spot"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold" />
 
-<TextView
-    android:id="@+id/txtActiveService"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Active Services"
-    android:textSize="22dp"
-    android:layout_marginTop="20dp"
-    android:layout_marginLeft="15dp"
-    android:textColor="@color/background_color"
-    android:drawableRight="@drawable/ic_baseline_chevron_right_24"
-    android:layout_below="@+id/saloonname"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="80dp"
+            android:src="@drawable/womenbarber" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/saloonname"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_centerInParent="true"-->
+<!--            android:gravity="center"-->
+<!--            android:text="Saloon Name Here"-->
+<!--            android:textColor="@color/background_color"-->
+<!--            android:textSize="28sp" />-->
+
+        <TextView
+            android:id="@+id/txtActiveService"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+
+            android:layout_below="@+id/saloonname"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:background="@drawable/loginbutton_selector"
+            android:drawableRight="@drawable/ic_baseline_chevron_right_24"
+            android:text="Active Services"
+            android:textColor="@color/background_color"
+            android:textSize="22dp" />
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addservicebtn"
@@ -43,9 +67,10 @@
         android:layout_alignParentBottom="true"
         android:layout_marginRight="30dp"
         android:layout_marginBottom="40dp"
-        android:src="@drawable/ic_add"
         android:background="@color/background_color"
+        android:src="@drawable/ic_add"
         app:fabSize="normal"
+        app:backgroundTint="@color/background_color"
         tools:ignore="MissingConstraints">
 
     </com.google.android.material.floatingactionbutton.FloatingActionButton>

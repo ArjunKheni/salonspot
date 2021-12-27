@@ -4,9 +4,9 @@
     <shape android:shape="rectangle">
         <solid android:color="#FFFFFF" />
         <stroke android:color="#a56f37" />
-        <stroke android:width="5dp"/>
+        <stroke android:width="2dp"/>
         <!--corners allow us to make the rounded corners button-->
-        <corners android:radius="120dp" />
+        <corners android:radius="10dp" />
     </shape>
 </item>
     </selector>

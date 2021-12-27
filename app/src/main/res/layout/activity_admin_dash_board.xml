@@ -32,6 +32,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="40dp"
         android:src="@drawable/ic_add"
+android:backgroundTint="@color/background_color"
         android:background="@color/background_color"
         app:fabSize="normal"
         tools:ignore="MissingConstraints">

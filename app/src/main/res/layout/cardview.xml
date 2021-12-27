@@ -83,7 +83,7 @@
                     android:id="@+id/srating"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="0.0⭐"
+                    android:text="0.0"
                     android:textColor="@color/background_color"
                     android:textSize="15dp" />
             </LinearLayout>

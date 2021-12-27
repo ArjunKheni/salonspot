@@ -1,12 +1,5 @@
 package com.scet.saloonspot;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.Manifest;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -19,9 +12,19 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -34,19 +37,16 @@ import com.google.firebase.auth.UserProfileChangeRequest;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.scet.saloonspot.models.Saloon;
 import com.scet.saloonspot.utils.Constant;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;
-import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class AddSaloonActivity extends AppCompatActivity {
+public class AddSaloonActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Toolbar toolbar;
     private CircleImageView saloonLogo;
@@ -58,12 +58,15 @@ public class AddSaloonActivity extends AppCompatActivity {
     private EditText edPassword;
     private Button btnSubmit;
     private Uri photoUri;
+    private Spinner spinner;
     private static final int SELECT_PHOTO = 100;
     private static final int STORAGE_PERMISSION = 111;
     final FirebaseDatabase database = FirebaseDatabase.getInstance();
     FirebaseStorage storage;
     StorageReference storageReference;
     private FirebaseAuth firebaseAuth;
+    int selectedPosition = 0;
+    private static final String[] areas = {"Varachcha", "Vesu", "Adajan", "Katargam", "Kamrej"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -95,27 +98,30 @@ public class AddSaloonActivity extends AppCompatActivity {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (edSaloonName.equals("") || edArea.equals("") || edEmail.equals("") || edMobile.equals("") || edPassword.equals("") || edSaloonAddress.equals("") || photoUri.equals("")) {
+                    Toast.makeText(AddSaloonActivity.this, "Enter all the Credentials", Toast.LENGTH_SHORT).show();
+                } else {
+                    firebaseAuth.createUserWithEmailAndPassword(edEmail.getText().toString(), edPassword.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                @Override
+                                public void onComplete(@NonNull Task<AuthResult> task) {
+                                    addDetails(task.getResult().getUser().getUid());
+                                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-                firebaseAuth.createUserWithEmailAndPassword(edEmail.getText().toString(), edPassword.getText().toString())
-                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                addDetails(task.getResult().getUser().getUid());
-                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+                                            .setDisplayName(Constant.SALOON).build();
 
-                                UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                        .setDisplayName(Constant.SALOON).build();
+                                    user.updateProfile(profileUpdates)
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
 
-                                user.updateProfile(profileUpdates)
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
+                                                }
+                                            });
+                                }
+                            });
 
-                                            }
-                                        });
-                            }
-                        });
-
+                }
             }
         });
         saloonLogo.setOnClickListener(new View.OnClickListener() {
@@ -135,7 +141,7 @@ public class AddSaloonActivity extends AppCompatActivity {
         progressDialog.setMessage("Please Wait");
         progressDialog.show();
 
-        StorageReference ref = storageReference.child("images/"+ edSaloonName.getText());
+        StorageReference ref = storageReference.child("images/" + edSaloonName.getText());
         ref.putFile(photoUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
@@ -153,7 +159,6 @@ public class AddSaloonActivity extends AppCompatActivity {
                         Toast.makeText(AddSaloonActivity.this, "Failed", Toast.LENGTH_SHORT).show();
                     }
                 });
-
 
 
         DatabaseReference myRef = database.getReference();
@@ -181,7 +186,7 @@ public class AddSaloonActivity extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference("Saloons");
 //        databaseReference.child(key).child("City").setValue(edCity.getText().toString().trim());
 //        databaseReference = firebaseDatabase.getReference("Saloons");
-        databaseReference.child(key).child("Area").setValue(edArea.getText().toString().trim());
+        databaseReference.child(key).child("Area").setValue(areas[selectedPosition]);
 //        databaseReference = firebaseDatabase.getReference("Saloons");
 //        databaseReference.child(key).child("Username").setValue(edUsername.getText().toString().trim());
 
@@ -201,7 +206,7 @@ public class AddSaloonActivity extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
 
-       // setSupportActionBar(toolbar);
+        // setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Add saloon");
         saloonLogo = findViewById(R.id.saloonLogo);
         edSaloonName = findViewById(R.id.edSaloonName);
@@ -211,14 +216,22 @@ public class AddSaloonActivity extends AppCompatActivity {
         edEmail = findViewById(R.id.edEmail);
         edPassword = findViewById(R.id.edPassword);
         btnSubmit = findViewById(R.id.btnSubmit);
+        spinner = findViewById(R.id.spinner);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(AddSaloonActivity.this,
+                android.R.layout.simple_spinner_item, areas);
+
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(adapter);
+        spinner.setOnItemSelectedListener(this);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch(requestCode) {
+        switch (requestCode) {
             case SELECT_PHOTO:
-                if(resultCode == RESULT_OK){
+                if (resultCode == RESULT_OK) {
                     Uri selectedImage = data.getData();
                     photoUri = selectedImage;
                     InputStream imageStream = null;
@@ -231,5 +244,15 @@ public class AddSaloonActivity extends AppCompatActivity {
                     saloonLogo.setImageBitmap(yourSelectedImage);
                 }
         }
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        selectedPosition = position;
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

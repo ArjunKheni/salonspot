@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,11 +26,13 @@ public class ShowServiceActivity extends AppCompatActivity implements ServiceAda
     String saloonId = "";
     ArrayList<Services> servicesList = new ArrayList<>();
     ServiceAdapter adapter;
+    Button btndelete;
     ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.active_servicelist);
+        btndelete=findViewById(R.id.btndelete);
         getInit();
         getData();
     }
@@ -46,7 +50,7 @@ public class ShowServiceActivity extends AppCompatActivity implements ServiceAda
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot datas: dataSnapshot.getChildren()){
-                    String name = datas.child("name").getValue().toString();
+                        String name = datas.child("name").getValue().toString();
                     String price = datas.child("price").getValue().toString();
                     String type = datas.child("type").getValue().toString();
 
@@ -67,6 +71,26 @@ public class ShowServiceActivity extends AppCompatActivity implements ServiceAda
                 progressDialog.dismiss();
             }
         });
+//btndelete.setOnClickListener(new View.OnClickListener() {
+//    @Override
+//    public void onClick(View view) {
+//        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(DataSnapshot dataSnapshot) {
+//                for(DataSnapshot datas: dataSnapshot.getChildren()){
+//
+//                    datas.getRef().getKey();
+//                }
+//
+//            }
+//            @Override
+//            public void onCancelled(DatabaseError databaseError) {
+//                progressDialog.dismiss();
+//            }
+//        });
+//    }
+//});
+
     }
 
     private void getInit() {

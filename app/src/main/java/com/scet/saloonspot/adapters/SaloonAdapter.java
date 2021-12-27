@@ -77,6 +77,7 @@ public class SaloonAdapter extends RecyclerView.Adapter<SaloonAdapter.ViewHolder
                 intent.putExtra("semail",saloon.getEmail());
                 intent.putExtra("sadd",saloon.getAddress());
                 intent.putExtra("smobile",saloon.getMobileNo());
+                intent.putExtra("workingHr",saloon.getWorkingHr());
                 intent.putExtra("sarea",saloon.getArea());
                 intent.putExtra("id",saloon.getId());
                 intent.putExtra("logo",images[i1]);

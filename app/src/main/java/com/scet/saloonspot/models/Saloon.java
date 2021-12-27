@@ -7,6 +7,7 @@ public class Saloon {
     String name;
     String address;
     String mobileNo;
+    String workingHr;
     String area;
     String email;
     String password;
@@ -15,11 +16,14 @@ public class Saloon {
     String id;
     String avgRating;
 
-    public Saloon(String name, String address, String mobileNo, String area, String email, String password, String image,String ext){
+    public Saloon(){}
+
+    public Saloon(String name, String address, String mobileNo, String workingHr, String area, String email, String password, String image,String ext){
         this.name = name;
         this.address = address;
         this.area = area;
         this.mobileNo = mobileNo;
+        this.workingHr = workingHr;
         this.email = email;
         this.password = password;
         this.image = image;
@@ -72,6 +76,14 @@ public class Saloon {
 
     public String getAvgRating() {
         return avgRating;
+    }
+
+    public String getWorkingHr() {
+        return workingHr;
+    }
+
+    public void setWorkingHr(String workingHr) {
+        this.workingHr = workingHr;
     }
 }
 

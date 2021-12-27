@@ -6,6 +6,8 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
@@ -15,7 +17,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".chatbot"></activity>
+        <activity android:name=".RecommendationServices"></activity>
+        <activity android:name=".AppoitmentActivity" />
+        <activity android:name=".chatbot" />
         <activity android:name=".Showreviewactivity" />
         <activity android:name=".ShowServiceActivity" />
         <activity android:name=".AddServiceActivity" />
@@ -30,17 +34,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
+        <activity android:name=".LoginActivity" />
         <activity android:name=".Dashboard" />
         <activity android:name=".Registration" />
         <activity android:name=".saloonchatmain" />
+        <activity android:name=".ForgotPasswordActivity"/>
+        <activity android:name=".ArCameraModule"/>
 
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true"
-            tools:replace="android:authorities"></provider>
+            tools:replace="android:authorities" />
     </application>
 
 </manifest>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:text=" Salon Working hours "
+        android:gravity="center|left"
+        android:textSize="22sp"
+        android:textColor="@color/white"
+        android:padding="5dp"
+        android:textStyle="bold"
+        android:background="@color/background_color"/>
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/title">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:padding="2dp"
+            android:background="@drawable/loginbutton_selector">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Open Time"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/opentimepick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="10dp"
+                android:text="Select Open Time"
+                android:textColor="@color/white"
+                android:background="@color/background_color"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/loginbutton_selector">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="Close Time"
+                android:textSize="22sp"
+                android:gravity="center"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/closetilepick"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:background="@color/background_color"
+                android:layout_margin="10dp"
+                android:text="Select Close Time"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/main"
+        android:layout_marginRight="15dp">
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="Save"
+            android:background="@color/background_color"
+            android:padding="5dp"
+            android:textColor="@color/white"/>
+
+        <Button
+            android:id="@+id/cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:background="@color/background_color"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

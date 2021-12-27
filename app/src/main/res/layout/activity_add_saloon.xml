@@ -3,19 +3,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/white"
+    android:orientation="vertical"
     android:theme="@style/AppTheme.Fullscreen"
     tools:context=".AddSaloonActivity">
 
-
-
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/background_color"
+        android:gravity="center|left"
+        android:padding="10dp"
+        android:text="Add New Saloon"
+        android:textColor="@color/white"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:theme="@style/AppTheme.Fullscreen">
 
-        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:background="#FFFFFF"
@@ -24,29 +32,28 @@
             <LinearLayout
                 android:id="@+id/saloontoplogo"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical"
-                android:layout_height="wrap_content">
+                android:orientation="vertical">
 
                 <ImageView
                     android:layout_width="200dp"
                     android:layout_height="200dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/barbersplash"
-                    />
+                    android:src="@drawable/barbersplash" />
 
 
-                <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:layout_marginRight="50dp"
-                    android:gravity="center"
-                    android:padding="10dp"
-                    android:text="Add New Saloon"
-                    android:textColor="@color/background_color"
-                    android:textSize="25sp"
-                    android:textStyle="bold" />
+<!--                <TextView-->
+<!--                    android:layout_width="fill_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginLeft="50dp"-->
+<!--                    android:layout_marginRight="50dp"-->
+<!--                    android:gravity="center"-->
+<!--                    android:padding="10dp"-->
+<!--                    android:text=""-->
+<!--                    android:textColor="@color/background_color"-->
+<!--                    android:textSize="25sp"-->
+<!--                    android:textStyle="bold" />-->
             </LinearLayout>
 
             <de.hdodenhof.circleimageview.CircleImageView
@@ -56,8 +63,8 @@
                 android:layout_below="@id/saloontoplogo"
                 android:layout_centerHorizontal="true"
                 android:padding="25dp"
-                android:tooltipText="Add Saloon Image"
-                android:src="@drawable/ic_image_icon">
+                android:src="@drawable/ic_image_icon"
+                android:tooltipText="Add Saloon Image">
 
             </de.hdodenhof.circleimageview.CircleImageView>
 
@@ -185,28 +192,27 @@
                     android:layout_height="1px"
                     android:background="@color/white_greyish" />
 
-                <EditText
-                    android:id="@+id/edArea"
-                    android:layout_width="fill_parent"
+                <TextView
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:background="@android:color/transparent"
                     android:drawableLeft="@drawable/ic_language_black_24dp"
-                    android:drawablePadding="8dp"
-                    android:gravity="center_vertical"
-                    android:hint="Area"
-                    android:inputType="text"
                     android:padding="10dp"
-                    android:singleLine="true"
+                    android:text="Area"
+                    android:drawablePadding="8dp"
                     android:textColor="@color/background_color"
-                    android:textColorHint="@color/background_color"
                     android:textSize="16sp" />
 
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
 
                 <View
                     android:layout_width="fill_parent"
                     android:layout_height="1px"
                     android:background="@color/white_greyish" />
+
 
                 <EditText
                     android:id="@+id/edEmail"
@@ -280,12 +286,10 @@
                     android:background="@drawable/loginbutton_selector"
                     android:padding="3dp"
                     android:text="Register"
-
                     android:textColor="#a56f37"
                     android:textSize="17sp"
                     android:textStyle="bold" />
             </LinearLayout>
-
 
 
         </RelativeLayout>
