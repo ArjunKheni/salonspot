@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:theme="@style/AppTheme.Fullscreen">
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/AppTheme.Fullscreen">
+
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="#FFFFFF"
+            android:padding="10dp">
+
+            <LinearLayout
+                android:id="@+id/saloontoplogo"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/barbersplash"
+                    />
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:gravity="center"
+                    android:padding="10dp"
+                    android:text="Add New Service"
+                    android:textColor="@color/background_color"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:visibility="gone"
+                android:id="@+id/servicephoto"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:layout_below="@id/saloontoplogo"
+                android:layout_centerHorizontal="true"
+                android:padding="25dp"
+                android:tooltipText="Add Saloon Image"
+                android:src="@drawable/ic_image_icon">
+
+            </de.hdodenhof.circleimageview.CircleImageView>
+
+            <LinearLayout
+                android:id="@+id/login_layout"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/servicephoto"
+                android:layout_centerInParent="true"
+                android:orientation="vertical">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Service Type"
+    android:textSize="16dp"
+    android:layout_marginLeft="10dp"
+    android:padding="10dp"
+    android:layout_marginTop="20dp"/>
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:entries="@array/array_name"
+                    android:layout_marginLeft="12dp"
+                    />
+
+                <EditText
+                    android:id="@+id/edtservicename"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_airline_seat_recline_extra_24"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:hint="Service Name"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/background_color"
+                    android:textColorHint="@color/background_color"
+                    android:textSize="16sp" />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/white_greyish" />
+
+                <EditText
+                    android:id="@+id/edServicePrice"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/lname"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:hint="Last Name"
+                    android:inputType="text"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/background_color"
+                    android:textColorHint="@color/background_color"
+                    android:textSize="16sp"
+                    android:visibility="gone" />
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1px"
+                    android:background="@color/white_greyish" />
+
+                <EditText
+                    android:id="@+id/edtservicprice"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="@android:color/transparent"
+                    android:drawableLeft="@drawable/ic_baseline_attach_money_24"
+                    android:drawablePadding="8dp"
+                    android:gravity="center_vertical"
+                    android:hint="Price"
+                    android:inputType="number"
+                    android:padding="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/background_color"
+                    android:textColorHint="@color/background_color"
+                    android:textSize="16sp" />
+
+
+
+                <Button
+                    android:id="@+id/btnaddservice"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/loginbutton_selector"
+                    android:padding="3dp"
+                    android:text="Add Service"
+
+                    android:textColor="#a56f37"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</LinearLayout>

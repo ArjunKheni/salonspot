@@ -1,0 +1,2 @@
+rootProject.name='Saloon Spot'
+include ':app'

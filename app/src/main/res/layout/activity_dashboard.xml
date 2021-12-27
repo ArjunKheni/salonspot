@@ -1,0 +1,79 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:id="@+id/coordinatorLayoutlogin"
+    tools:context=".Dashboard">
+
+    <RelativeLayout
+        android:id="@+id/rl1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/login_layout"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/servicephoto"
+            android:orientation="vertical">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:weightSum="3">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:padding="10dp"
+                android:text="Filter"
+                android:layout_weight="2"
+                android:textSize="16dp" />
+    <ImageButton
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/aibotid"
+        android:layout_weight="1"
+        android:background="@color/white"
+        android:src="@drawable/ic_baseline_chat_24"></ImageButton>
+</LinearLayout>
+            <Spinner
+                android:id="@+id/sortspinner"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+                android:drawSelectorOnTop="true"
+                android:entries="@array/Sorttype" />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/asid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Available Saloons"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="12dp"
+            android:layout_below="@id/login_layout"
+            android:textSize="16sp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/asid"
+            android:theme="@style/AppTheme.Fullscreen"
+            android:layout_marginTop="10dp"
+            tools:context=".Dashboard">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:theme="@style/AppTheme.Fullscreen">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </LinearLayout>
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
